@@ -13,7 +13,7 @@ const routes = [
       },
       {
         path: "/skills",
-        name: "Skill",
+        name: "SkillIndex",
         component: () => import("@/views/skills/SkillIndex.vue"),
       },
       {
@@ -25,6 +25,7 @@ const routes = [
         path: "/skills/:id/edit",
         name: "SkillEdit",
         component: () => import("@/views/skills/SkillEdit.vue"),
+        props: true,
       },
     ],
   },

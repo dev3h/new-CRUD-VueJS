@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
 
@@ -8,8 +8,7 @@ export default function useSkills() {
   const skills = ref([]);
   const skill = ref({});
   const errors = ref({});
-  const router = useRoute();
-  console.log(skills);
+  const router = useRouter();
 
   const getSkills = async () => {
     try {
@@ -32,20 +31,19 @@ export default function useSkills() {
       await axios.post("/skills", data);
       await router.push({ name: "SkillIndex" });
     } catch (error) {
-      console.log(error);
-      if (error.response.status === 422) {
-        errors.value = error.response.data?.errors;
+      if (error?.response?.status === 422) {
+        errors.value = error.response?.data?.errors;
       }
     }
   };
   const updateSkill = async (id) => {
     try {
-      await axios.post(`/skills/${id}`, skill.value);
+      await axios.put(`/skills/${id}`, skill.value);
       await router.push({ name: "SkillIndex" });
     } catch (error) {
       console.log(error);
-      if (error.response.status === 422) {
-        errors.value = error.response.data?.errors;
+      if (error?.response?.status === 422) {
+        errors.value = error.response?.data?.errors;
       }
     }
   };

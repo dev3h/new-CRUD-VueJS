@@ -1,0 +1,2 @@
+- [ref and reactive](https://viblo.asia/p/ref-va-reactive-trong-vue-3-m2vJPORl4eK)
+- Về cơ bản reactive cũng giống ref nhưng nó chỉ nhận object thôi
